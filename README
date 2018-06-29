@@ -1,0 +1,8 @@
+URI for Standard ML
+*******************
+
+With Internationalized Domain Names (IDN) and Internationalized Resource Identifiers(IRI) support.
+
+See t.sml for example.
+
+To run tests type 'make poly' or 'make mlton' or 'make test'.
