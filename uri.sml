@@ -35,7 +35,7 @@ struct
 
   val scheme    = takeWhile (fn c => c <> #":" andalso c <> #"/" andalso c <> #"?" andalso c <> #"#") <* takeStr ":"
 
-  val authority = takeStr "//" *> takeWhile (fn c => c <> #"/" andalso c <> #"?" andalso c <> #"#")
+  val authority = takeStr "//" *> takeWhile (fn c => c = #"/") *> takeWhile (fn c => c <> #"/" andalso c <> #"?" andalso c <> #"#")
 
   val path      = takeWhile (fn c => c <> #"?" andalso c <> #"#")
 

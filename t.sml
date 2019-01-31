@@ -72,7 +72,7 @@ val _ = isSomeAndCont u "new" (fn u => (
 () ) )
 
 
-val u = Uri.uri "http://u:p@www.foo.com/baz/bar.html?a=b#too"
+val u = Uri.uri "http:////u:p@www.foo.com/baz/bar.html?a=b#too"
 val _ = isSomeAndCont u "new" (fn u => (
   is (Uri.scheme    u, SOME "http",           "scheme");
   is (Uri.user      u, SOME "u",              "user");
