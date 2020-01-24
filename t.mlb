@@ -1,7 +1,7 @@
 $(SML_LIB)/basis/basis.mlb
-scancom/scancom.sml
-unicode/utf8.sml
-unicode/unicode.sml
+$(USER_SML_LIB)/scancom/scancom.sml
+$(USER_SML_LIB)/unicode/utf8.sml
+$(USER_SML_LIB)/unicode/unicode.sml
 uri-escape.sml
 uri-punycode.sml
 uri.sml

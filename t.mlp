@@ -1,6 +1,9 @@
-use "scancom/scancom.sml";
-use "unicode/utf8.sml";
-use "unicode/unicode-if.sml";
+val p = getOpt (OS.Process.getEnv "USER_SML_LIB", ".") ^ "/";
+
+use (p ^ "scancom/scancom.sml");
+use (p ^ "unicode/utf8.sml");
+use (p ^ "unicode/unicode-if.sml");
+
 use "uri-escape.sml";
 use "uri-punycode.sml";
 use "uri.sml";
