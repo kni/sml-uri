@@ -74,7 +74,8 @@ in
      c = #"+" orelse
      c = #"," orelse
      c = #";" orelse
-     c = #"="
+     c = #"=" orelse
+     c = #"%"
    then true else false
 end
 
