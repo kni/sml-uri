@@ -86,7 +86,7 @@ struct
   fun encodeHostPart p = if onlyAscii p then p else
     "xn--" ^ (UriPunycode.encode (List.filter filterUnicode (Unicode.toCaseFolded (Utf8.decode p))))
 
-  fun encodeHost h = if onlyAscii h then h else
+  fun encodeHost h = if onlyAscii h then String.map Char.toLower h else
     String.concatWith "." (List.map encodeHostPart (String.tokens (fn c => c = #".") h))
 
 

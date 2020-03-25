@@ -58,7 +58,7 @@ fun is (got, expected, name) =
 
 
 
-val u = Uri.uri "http://www.foo.com:80/baz/foo.html?a=b&c=d"
+val u = Uri.uri "http://www.Foo.com:80/baz/foo.html?a=b&c=d"
 val _ = isSomeAndCont u "new" (fn u => (
   is (Uri.scheme    u, SOME "http",           "scheme");
   is (Uri.user      u, NONE,                  "user");
