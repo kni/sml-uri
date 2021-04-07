@@ -93,10 +93,28 @@ fun escapeChar (c, r) = if isNotEscapedChar c then c::r else
   case toHex2 (ord c) of NONE => r | SOME (h2, h1) => (h1::(h2::(#"%"::r)))
 
 
+fun reescape text = (* %xx -> %XX *)
+let
+  fun scan r getc strm = case getc strm of NONE => SOME (List.rev r, strm) | SOME (c, strm) =>
+    if c <> #"%" then scan (c::r) getc strm else
+    case getc strm of NONE => SOME (List.rev r, strm) | SOME (c1, strm) =>
+    case getc strm of NONE => SOME (List.rev r, strm) | SOME (c2, strm) =>
+    scan ((Char.toUpper c2)::(Char.toUpper c1)::(#"%")::r) getc strm
+in
+  if Char.contains text #"%"
+  then String.implode (Option.valOf (StringCvt.scanString (scan []) text))
+  else text
+end
+
+
 fun escape text =
+let
+  val text = reescape text
+in
   if needEscape text
   then String.implode (List.rev (CharVector.foldl escapeChar [] text))
   else text
+end
 
 
 fun unescape text =

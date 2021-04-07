@@ -199,10 +199,19 @@ let
 
   val e = "http://www.foo.com/%D0%93%D0%BE%D0%BB%D0%BE%D0%B2%D0%BD%D0%B0/%D1%81%D1%82%D0%BE%D1%80%D1%96%D0%BD%D0%BA%D0%B0?a=%D0%92%D1%96%D1%82%D0%B0%D1%8E&b=%D0%94%D0%BE%20%D0%BF%D0%BE%D0%B1%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D1%8F"
   val u = Option.valOf (Uri.uri s)
-
 in
   is (Uri.toString u, e, "escape");
   is (Uri.toIri    u, s, "unescape")
+end
+
+
+val _ =
+let
+  val s = "https://localhost/%d0%92%d1%96%d1%82%d0%b0%d1%8e2/"
+  val e = "https://localhost/%D0%92%D1%96%D1%82%D0%B0%D1%8E2/"
+  val u = Option.valOf (Uri.uri s)
+in
+  is (Uri.toString u, e, "reescape")
 end
 
 
