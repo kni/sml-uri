@@ -29,7 +29,7 @@ let
 
   fun loop delta k =
     if delta > ((base - tmin) * tmax) div 0w2
-    then loop (if delta = 0w0 then base - tmin else delta) (k + base)
+    then loop (delta div (base - tmin)) (k + base)
     else (k, delta)
 
   val (k, delta) = loop delta 0w0

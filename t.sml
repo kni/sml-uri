@@ -236,4 +236,14 @@ in
 end
 
 
+val _ =
+let
+  (* "› NASA Advisory Council Commercial Space Committee" *)
+  val t = "\226\128\186 NASA Advisory Council Commercial Space Committee"
+  val e = " NASA Advisory Council Commercial Space Committee-4r54a"
+in
+  is ((UriPunycode.encode o Utf8.decode) t, e, "Punycode")
+end
+
+
 val _ = endTests ()
